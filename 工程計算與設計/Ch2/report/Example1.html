@@ -1,0 +1,763 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Example1</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-10-06"><meta name="DC.source" content="Example1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Explores some basic concepts about unsigned integer numbers.</a></li><li><a href="#2">Explores some basic concepts about signed integer numbers.</a></li><li><a href="#3">Shows how the computer stores a real number</a></li><li><a href="#4">Shows the number of significant digits of a floating-point number</a></li><li><a href="#5">Explores some basic concepts about characters and strings.</a></li><li><a href="#6">Prints an ASCII Codes table.</a></li><li><a href="#7">Explores some basic concepts about logical data.</a></li><li><a href="#8">Explores some basic concepts about arrays.</a></li><li><a href="#9">Explores some basic concepts about arrays</a></li><li><a href="#10">Explores some basic concepts about arrays.</a></li><li><a href="#11">Explores some basic concepts about arrays.</a></li><li><a href="#12">Demonstrates the use of sum, cumsum, prod, cumprod, diff, min, and max.</a></li><li><a href="#13">Demonstrates the use of arithmetic operators for matrices.</a></li><li><a href="#14">Demonstrates the use of arithmetic operators for vectors.</a></li><li><a href="#15">Demonstrates the use of arithmetic operators for scalars.</a></li></ul></div><h2 id="1">Explores some basic concepts about unsigned integer numbers.</h2><pre class="codeinput">d = 75;
+u = uint8(d) <span class="comment">% &#36681;&#25563;&#25104;&#19981;&#24118;&#27491;&#36000;&#34399;&#12289; 8 &#20301;&#20803;&#30340;&#25972;&#25976;</span>
+<span class="comment">% bits = bitget(u, 1:8) % &#36820;&#22238;&#25972;??? A &#20013;&#20301;&#20110;&#20301;&#32622; bit &#30340;&#20301;&#20540;</span>
+<span class="comment">% bits = fliplr(bits); % &#32763;&#36681;&#34892;&#21521;&#37327;</span>
+bits = dec2bin(u)
+number = bin2dec(bits)
+</pre><pre class="codeoutput">u =
+  uint8
+   75
+bits =
+    '1001011'
+number =
+    75
+</pre><h2 id="2">Explores some basic concepts about signed integer numbers.</h2><pre class="codeinput">d = 200
+u = uint8(d)
+bits = dec2bin(u) <span class="comment">% dec2bin : &#20197;&#23383;&#31526;&#21521;&#37327;&#24418;&#24335;&#36820;&#22238;d&#30340;&#20108;&#36914;&#35069;&#34920;&#31034;&#24418;&#24335;</span>
+t = int8(u)
+s = typecast(u, <span class="string">'int8'</span>) <span class="comment">% &#22312;&#19981;&#26356;&#25913;&#22522;&#30990;&#25976;&#25818;&#30340;&#24773;&#27841;&#19979;&#36681;&#25563;&#25976;&#25818;&#39006;&#22411;</span>
+a = int16(u)
+bits = dec2bin(a)
+</pre><pre class="codeoutput">d =
+   200
+u =
+  uint8
+   200
+bits =
+    '11001000'
+t =
+  int8
+   127
+s =
+  int8
+   -56
+a =
+  int16
+   200
+bits =
+    '11001000'
+</pre><h2 id="3">Shows how the computer stores a real number</h2><pre class="codeinput">d = 28
+a = typecast(d, <span class="string">'uint64'</span>)
+b = dec2bin(a, 64)
+</pre><pre class="codeoutput">d =
+    28
+a =
+  uint64
+   4628574517030027264
+b =
+    '0100000000111100000000000000000000000000000000000000000000000000'
+</pre><h2 id="4">Shows the number of significant digits of a floating-point number</h2><pre class="codeinput">format <span class="string">short</span>;
+format <span class="string">compact</span>;
+a = 1234.56789012345678901234;
+fprintf(<span class="string">'%.20f\n'</span>, a)
+format <span class="string">long</span>;
+a;
+b = single(a); <span class="comment">% single(X)&#23559;X&#20013;&#30340;&#20540;&#36681;&#25563;&#28858;&#21934;&#31934;&#24230;</span>
+fprintf(<span class="string">'%.20f\n'</span>, b)
+</pre><pre class="codeoutput">1234.56789012345689116046
+1234.56787109375000000000
+</pre><h2 id="5">Explores some basic concepts about characters and strings.</h2><pre class="codeinput">a = <span class="string">'A'</span>;
+b = a + 1;
+char(65) <span class="comment">% &#23559;&#25972;&#25976;&#36681;&#25563;&#28858;&#23383;&#31526;</span>
+char(<span class="string">'A'</span> + 2)
+c = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]
+d = [<span class="string">'AB'</span>, <span class="string">'C'</span>]
+e = [<span class="string">'A'</span>, 66, 67]
+f = <span class="string">'ABC'</span>
+f(1)
+f(2)
+f(3)
+</pre><pre class="codeoutput">ans =
+    'A'
+ans =
+    'C'
+c =
+    'ABC'
+d =
+    'ABC'
+e =
+    'ABC'
+f =
+    'ABC'
+ans =
+    'A'
+ans =
+    'B'
+ans =
+    'C'
+</pre><h2 id="6">Prints an ASCII Codes table.</h2><pre class="codeinput">fprintf(<span class="string">'    0 1 2 3 4 5 6 7 8 9\n'</span>)
+<span class="keyword">for</span> row = 3:12
+    fprintf(<span class="string">'%2d  '</span>, row)
+    <span class="keyword">for</span> column = 0:9
+        code = row*10+column;
+        <span class="keyword">if</span> (code &lt; 32) || (code &gt; 126)
+            fprintf(<span class="string">'  '</span>)
+        <span class="keyword">else</span>
+            fprintf(<span class="string">'%c '</span>, code)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    fprintf(<span class="string">'\n'</span>)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">    0 1 2 3 4 5 6 7 8 9
+ 3        ! " # $ % &amp; ' 
+ 4  ( ) * + , - . / 0 1 
+ 5  2 3 4 5 6 7 8 9 : ; 
+ 6  &lt; = &gt; ? @ A B C D E 
+ 7  F G H I J K L M N O 
+ 8  P Q R S T U V W X Y 
+ 9  Z [ \ ] ^ _ ` a b c 
+10  d e f g h i j k l m 
+11  n o p q r s t u v w 
+12  x y z { | } ~       
+</pre><h2 id="7">Explores some basic concepts about logical data.</h2><pre class="codeinput">a = true
+b = false
+c = 6 &gt; 5
+d = 6 &lt; 5
+e = (6 &gt; 5)*10
+f = false*10+true*2
+g = (6 &gt; 5) &amp; (6 &lt; 5)
+h = (6 &gt; 5) | (6 &lt; 5)
+k = logical(5)
+m = 5 | 0
+n = (-2) &amp; <span class="string">'A'</span>
+</pre><pre class="codeoutput">a =
+  logical
+   1
+b =
+  logical
+   0
+c =
+  logical
+   1
+d =
+  logical
+   0
+e =
+    10
+f =
+     2
+g =
+  logical
+   0
+h =
+  logical
+   1
+k =
+  logical
+   1
+m =
+  logical
+   1
+n =
+  logical
+   1
+</pre><h2 id="8">Explores some basic concepts about arrays.</h2><pre class="codeinput">a = 5
+b = [5]
+c = 5*ones(1,1)
+D = ones(2, 3)
+e = [1, 2, 3, 4, 5]
+f = [1 2 3 4 5]
+g = [1:5]
+h = 1:5
+k = 1:1:5
+m = linspace(1, 5, 5)
+</pre><pre class="codeoutput">a =
+     5
+b =
+     5
+c =
+     5
+D =
+     1     1     1
+     1     1     1
+e =
+     1     2     3     4     5
+f =
+     1     2     3     4     5
+g =
+     1     2     3     4     5
+h =
+     1     2     3     4     5
+k =
+     1     2     3     4     5
+m =
+     1     2     3     4     5
+</pre><h2 id="9">Explores some basic concepts about arrays</h2><pre class="codeinput">clear <span class="string">all</span> <span class="string">clc</span>
+a = zeros(1,5)
+a(1,5) = 8
+a(5) = 9
+a([1, 2, 4]) = [8, 7, 6]
+a(1:4) = [2, 3, 4, 5]
+[rows, cols] = size(a)
+len = length(a)
+b = a
+c = a(1:5)
+d = a(3:5)
+e = a(3:length(a))
+f = a(3:end)
+f(5) = 10
+</pre><pre class="codeoutput">a =
+     0     0     0     0     0
+a =
+     0     0     0     0     8
+a =
+     0     0     0     0     9
+a =
+     8     7     0     6     9
+a =
+     2     3     4     5     9
+rows =
+     1
+cols =
+     5
+len =
+     5
+b =
+     2     3     4     5     9
+c =
+     2     3     4     5     9
+d =
+     4     5     9
+e =
+     4     5     9
+f =
+     4     5     9
+f =
+     4     5     9     0    10
+</pre><h2 id="10">Explores some basic concepts about arrays.</h2><pre class="codeinput">a = [1, 2; 3, 4; 5, 6]
+b = 1:6
+c = reshape(b, 3, 2)
+d = reshape(b, 2, 3)
+e = d'
+c(:,3) = [7, 8, 9]
+c(4,:) = [10, 11, 12]
+c(4,:) = []
+c(:,2:3) = []
+</pre><pre class="codeoutput">a =
+     1     2
+     3     4
+     5     6
+b =
+     1     2     3     4     5     6
+c =
+     1     4
+     2     5
+     3     6
+d =
+     1     3     5
+     2     4     6
+e =
+     1     2
+     3     4
+     5     6
+c =
+     1     4     7
+     2     5     8
+     3     6     9
+c =
+     1     4     7
+     2     5     8
+     3     6     9
+    10    11    12
+c =
+     1     4     7
+     2     5     8
+     3     6     9
+c =
+     1
+     2
+     3
+</pre><h2 id="11">Explores some basic concepts about arrays.</h2><pre class="codeinput">a = reshape(1:6, 3, 2)
+b = [7; 8; 9]
+c = horzcat(a, b) <span class="comment">% &#27700;&#24179;&#20018;&#32879;&#20841;&#20491;&#30697;&#38499;</span>
+d = [a, b]
+e = b'
+f = vertcat(d, e) <span class="comment">% &#22402;&#30452;&#20018;&#32879;&#20841;&#20491;&#30697;&#38499;</span>
+g = [d; e]
+h = fliplr(c) <span class="comment">% &#32763;&#36681;&#34892;&#21521;&#37327;</span>
+k = flipud(c) <span class="comment">% &#32763;&#36681;&#21015;&#21521;&#37327;</span>
+</pre><pre class="codeoutput">a =
+     1     4
+     2     5
+     3     6
+b =
+     7
+     8
+     9
+c =
+     1     4     7
+     2     5     8
+     3     6     9
+d =
+     1     4     7
+     2     5     8
+     3     6     9
+e =
+     7     8     9
+f =
+     1     4     7
+     2     5     8
+     3     6     9
+     7     8     9
+g =
+     1     4     7
+     2     5     8
+     3     6     9
+     7     8     9
+h =
+     7     4     1
+     8     5     2
+     9     6     3
+k =
+     3     6     9
+     2     5     8
+     1     4     7
+</pre><h2 id="12">Demonstrates the use of sum, cumsum, prod, cumprod, diff, min, and max.</h2><pre class="codeinput">a = 1:5
+b = sum(a) <span class="comment">% &#25976;&#32068;&#20803;&#32032;&#32317;&#21644;</span>
+c = cumsum(a)
+<span class="comment">% cumsum(A)&#24478;A&#20013;&#30340;&#31532;&#19968;&#20491;&#20854;&#22823;&#23567;&#19981;&#31561;&#26044;1&#30340;&#25976;&#32068;&#32173;&#24230;&#38283;&#22987;&#36820;&#22238;A&#30340;&#32047;&#31309;&#21644;&#12290;</span>
+<span class="comment">% &#22914;&#26524;A&#26159;&#21521;&#37327;&#65292;&#21063;cumsum(A)&#36820;&#22238;&#21253;&#21547;A&#20803;&#32032;&#32047;&#31309;&#21644;&#30340;&#21521;&#37327;&#12290;</span>
+<span class="comment">% &#22914;&#26524;A&#26159;&#30697;&#38499;&#65292;&#21063;cumsum(A)&#36820;&#22238;&#21253;&#21547;A&#27599;&#21015;&#30340;&#32047;&#31309;&#21644;&#30340;&#30697;&#38499;&#12290;</span>
+<span class="comment">% &#22914;&#26524;A&#28858;&#22810;&#32173;&#25976;&#32068;&#65292;&#21063;cumsum(A)&#27839;&#31532;&#19968;&#20491;&#38750;&#21934;&#19968;&#32173;&#36939;&#31639;&#12290;</span>
+
+d = prod(a) <span class="comment">% &#36820;&#22238;a&#30340;&#25976;&#32068;&#20803;&#32032;&#30340;&#20056;&#31309;</span>
+e = cumprod(a)
+<span class="comment">% cumprod(A) &#24478;A&#20013;&#30340;&#31532;&#19968;&#20491;&#20854;&#22823;&#23567;&#19981;&#31561;&#26044;1&#30340;&#25976;&#32068;&#32173;&#24230;&#38283;&#22987;&#36820;&#22238;A&#30340;&#32047;&#31309;&#20056;&#31309;&#12290;</span>
+<span class="comment">% &#22914;&#26524;A&#26159;&#21521;&#37327;&#65292;cumprod(A)&#36820;&#22238;&#21253;&#21547;A&#20803;&#32032;&#30340;&#32047;&#35336;&#20056;&#31309;&#30340;&#21521;&#37327;&#12290;</span>
+<span class="comment">% &#22914;&#26524;A&#26159;&#30697;&#38499;&#65292;&#21063;cumprod(A)&#36820;&#22238;&#21253;&#21547;A&#27599;&#21015;&#30340;&#32047;&#35336;&#20056;&#31309;&#30340;&#30697;&#38499;&#12290;</span>
+<span class="comment">% &#22914;&#26524;A&#28858;&#22810;&#32173;&#25976;&#32068;&#65292;&#21063;cumprod(A)&#27839;&#31532;&#19968;&#20491;&#38750;&#21934;&#19968;&#32173;&#36939;&#31639;</span>
+
+f = diff(a) <span class="comment">% &#24046;&#20998;&#21644;&#36817;&#20284;&#23566;&#25976;</span>
+A = reshape(1:9, 3, 3)
+g = sum(A)
+B = cumsum(A)
+h = prod(A)
+C = cumprod(A)
+D = diff(A)
+p = min(a)
+q = max(a)
+r = min(A) <span class="comment">% &#22914;&#26524;A&#28858;&#30697;&#38499;&#65292;&#21063;min(A)&#26159;&#21253;&#21547;&#27599;&#19968;&#21015;&#30340;&#26368;&#23567;&#20540;&#30340;&#34892;&#21521;&#37327;</span>
+s = max(A) <span class="comment">% &#22914;&#26524;A&#28858;&#30697;&#38499;&#65292;&#21063;max(A)&#26159;&#21253;&#21547;&#27599;&#19968;&#21015;&#30340;&#26368;&#22823;&#20540;&#30340;&#34892;&#21521;&#37327;</span>
+</pre><pre class="codeoutput">a =
+     1     2     3     4     5
+b =
+    15
+c =
+     1     3     6    10    15
+d =
+   120
+e =
+     1     2     6    24   120
+f =
+     1     1     1     1
+A =
+     1     4     7
+     2     5     8
+     3     6     9
+g =
+     6    15    24
+B =
+     1     4     7
+     3     9    15
+     6    15    24
+h =
+     6   120   504
+C =
+     1     4     7
+     2    20    56
+     6   120   504
+D =
+     1     1     1
+     1     1     1
+p =
+     1
+q =
+     5
+r =
+     1     4     7
+s =
+     3     6     9
+</pre><h2 id="13">Demonstrates the use of arithmetic operators for matrices.</h2><pre class="codeinput">A = reshape(1:6, 2, 3)
+B = reshape(7:12, 2, 3)
+C = A+B
+D = A-B
+E = B'
+F = A*E
+a = [3, 6]
+b = a/F
+c = b*F
+G = F^2
+H = A.*B
+K = A./B
+M = A.^2
+P = A+10
+Q = A-10
+R = A*1.5
+S = A/2
+</pre><pre class="codeoutput">A =
+     1     3     5
+     2     4     6
+B =
+     7     9    11
+     8    10    12
+C =
+     8    12    16
+    10    14    18
+D =
+    -6    -6    -6
+    -6    -6    -6
+E =
+     7     8
+     9    10
+    11    12
+F =
+    89    98
+   116   128
+a =
+     3     6
+b =
+ -12.999999999999723   9.999999999999789
+c =
+     3     6
+G =
+       19289       21266
+       25172       27752
+H =
+     7    27    55
+    16    40    72
+K =
+   0.142857142857143   0.333333333333333   0.454545454545455
+   0.250000000000000   0.400000000000000   0.500000000000000
+M =
+     1     9    25
+     4    16    36
+P =
+    11    13    15
+    12    14    16
+Q =
+    -9    -7    -5
+    -8    -6    -4
+R =
+   1.500000000000000   4.500000000000000   7.500000000000000
+   3.000000000000000   6.000000000000000   9.000000000000000
+S =
+   0.500000000000000   1.500000000000000   2.500000000000000
+   1.000000000000000   2.000000000000000   3.000000000000000
+</pre><h2 id="14">Demonstrates the use of arithmetic operators for vectors.</h2><pre class="codeinput">a = 1:4
+b = 5:8
+c = a+b
+d = a-b
+e = a*(b')
+f = (a')*b
+g = a/b
+h = a.*b
+k = a./b
+m = a.^2
+</pre><pre class="codeoutput">a =
+     1     2     3     4
+b =
+     5     6     7     8
+c =
+     6     8    10    12
+d =
+    -4    -4    -4    -4
+e =
+    70
+f =
+     5     6     7     8
+    10    12    14    16
+    15    18    21    24
+    20    24    28    32
+g =
+   0.402298850574713
+h =
+     5    12    21    32
+k =
+  Columns 1 through 3
+   0.200000000000000   0.333333333333333   0.428571428571429
+  Column 4
+   0.500000000000000
+m =
+     1     4     9    16
+</pre><h2 id="15">Demonstrates the use of arithmetic operators for scalars.</h2><pre class="codeinput">a = 6
+b = 4
+c = a+b
+d = a-b
+e = a*b
+f = a/b
+g = a^2
+h = a.*b
+k = a./b
+m = a.^2
+</pre><pre class="codeoutput">a =
+     6
+b =
+     4
+c =
+    10
+d =
+     2
+e =
+    24
+f =
+   1.500000000000000
+g =
+    36
+h =
+    24
+k =
+   1.500000000000000
+m =
+    36
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Explores some basic concepts about unsigned integer numbers.
+d = 75;
+u = uint8(d) % 轉換成不帶正負號、 8 位元的整數
+% bits = bitget(u, 1:8) % 返回整??? A 中位于位置 bit 的位值
+% bits = fliplr(bits); % 翻轉行向量
+bits = dec2bin(u)
+number = bin2dec(bits)
+%% Explores some basic concepts about signed integer numbers.
+d = 200
+u = uint8(d)
+bits = dec2bin(u) % dec2bin : 以字符向量形式返回d的二進製表示形式
+t = int8(u)
+s = typecast(u, 'int8') % 在不更改基礎數據的情況下轉換數據類型
+a = int16(u)
+bits = dec2bin(a)
+%% Shows how the computer stores a real number
+d = 28
+a = typecast(d, 'uint64')
+b = dec2bin(a, 64)
+%% Shows the number of significant digits of a floating-point number
+format short;
+format compact;
+a = 1234.56789012345678901234;
+fprintf('%.20f\n', a)
+format long;
+a;
+b = single(a); % single(X)將X中的值轉換為單精度
+fprintf('%.20f\n', b)
+%% Explores some basic concepts about characters and strings.
+a = 'A';
+b = a + 1;
+char(65) % 將整數轉換為字符
+char('A' + 2)
+c = ['A', 'B', 'C']
+d = ['AB', 'C']
+e = ['A', 66, 67]
+f = 'ABC'
+f(1)
+f(2)
+f(3)
+%% Prints an ASCII Codes table.
+fprintf('    0 1 2 3 4 5 6 7 8 9\n')
+for row = 3:12
+    fprintf('%2d  ', row)
+    for column = 0:9
+        code = row*10+column;
+        if (code < 32) || (code > 126)
+            fprintf('  ')
+        else
+            fprintf('%c ', code)
+        end
+    end
+    fprintf('\n')
+end
+%% Explores some basic concepts about logical data.
+a = true
+b = false
+c = 6 > 5
+d = 6 < 5
+e = (6 > 5)*10
+f = false*10+true*2
+g = (6 > 5) & (6 < 5)
+h = (6 > 5) | (6 < 5)
+k = logical(5)
+m = 5 | 0
+n = (-2) & 'A'
+%% Explores some basic concepts about arrays.
+a = 5
+b = [5]
+c = 5*ones(1,1)
+D = ones(2, 3)
+e = [1, 2, 3, 4, 5]
+f = [1 2 3 4 5]
+g = [1:5]
+h = 1:5
+k = 1:1:5
+m = linspace(1, 5, 5)
+%% Explores some basic concepts about arrays
+clear all clc
+a = zeros(1,5)
+a(1,5) = 8
+a(5) = 9
+a([1, 2, 4]) = [8, 7, 6]
+a(1:4) = [2, 3, 4, 5]
+[rows, cols] = size(a)
+len = length(a)
+b = a
+c = a(1:5)
+d = a(3:5)
+e = a(3:length(a))
+f = a(3:end)
+f(5) = 10
+%% Explores some basic concepts about arrays.
+a = [1, 2; 3, 4; 5, 6]
+b = 1:6
+c = reshape(b, 3, 2)
+d = reshape(b, 2, 3)
+e = d'
+c(:,3) = [7, 8, 9]
+c(4,:) = [10, 11, 12]
+c(4,:) = []
+c(:,2:3) = []
+%% Explores some basic concepts about arrays.
+a = reshape(1:6, 3, 2)
+b = [7; 8; 9]
+c = horzcat(a, b) % 水平串聯兩個矩陣
+d = [a, b]
+e = b'
+f = vertcat(d, e) % 垂直串聯兩個矩陣
+g = [d; e]
+h = fliplr(c) % 翻轉行向量
+k = flipud(c) % 翻轉列向量
+%% Demonstrates the use of sum, cumsum, prod, cumprod, diff, min, and max.
+a = 1:5
+b = sum(a) % 數組元素總和
+c = cumsum(a)
+% cumsum(A)從A中的第一個其大小不等於1的數組維度開始返回A的累積和。 
+% 如果A是向量，則cumsum(A)返回包含A元素累積和的向量。 
+% 如果A是矩陣，則cumsum(A)返回包含A每列的累積和的矩陣。 
+% 如果A為多維數組，則cumsum(A)沿第一個非單一維運算。
+
+d = prod(a) % 返回a的數組元素的乘積
+e = cumprod(a)
+% cumprod(A) 從A中的第一個其大小不等於1的數組維度開始返回A的累積乘積。
+% 如果A是向量，cumprod(A)返回包含A元素的累計乘積的向量。
+% 如果A是矩陣，則cumprod(A)返回包含A每列的累計乘積的矩陣。
+% 如果A為多維數組，則cumprod(A)沿第一個非單一維運算
+
+f = diff(a) % 差分和近似導數
+A = reshape(1:9, 3, 3)
+g = sum(A)
+B = cumsum(A)
+h = prod(A)
+C = cumprod(A)
+D = diff(A)
+p = min(a)
+q = max(a)
+r = min(A) % 如果A為矩陣，則min(A)是包含每一列的最小值的行向量
+s = max(A) % 如果A為矩陣，則max(A)是包含每一列的最大值的行向量
+
+%% Demonstrates the use of arithmetic operators for matrices.
+A = reshape(1:6, 2, 3)
+B = reshape(7:12, 2, 3)
+C = A+B
+D = A-B
+E = B'
+F = A*E
+a = [3, 6]
+b = a/F
+c = b*F
+G = F^2
+H = A.*B
+K = A./B
+M = A.^2
+P = A+10
+Q = A-10
+R = A*1.5
+S = A/2
+%% Demonstrates the use of arithmetic operators for vectors.
+a = 1:4
+b = 5:8
+c = a+b
+d = a-b
+e = a*(b')
+f = (a')*b
+g = a/b
+h = a.*b
+k = a./b
+m = a.^2
+%% Demonstrates the use of arithmetic operators for scalars.
+a = 6
+b = 4
+c = a+b
+d = a-b
+e = a*b
+f = a/b
+g = a^2
+h = a.*b
+k = a./b
+m = a.^2
+##### SOURCE END #####
+--></body></html>
