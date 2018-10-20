@@ -51,7 +51,7 @@ surf(X,theta_arr,Z) % 畫出立體曲面圖
 
 hold on % 保持原有圖形
 Z = zeros(m,n); %建立51X101的matrix
-mesh(X,theta_arr,Z) % 繪製3D曲面
+mesh(X,theta_arr,Z)
 xlabel('Distance (m)')
 ylabel('Angle (radian)')
 zlabel('Height (m)')
